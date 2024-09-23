@@ -7,10 +7,10 @@ const MenuItemData = [
   {
     title: 'Inventory',
     submenu: [
-      { title: 'Inventory Grid', linked: '/inventory-grid' },
-      { title: 'Inventory List', linked: '/inventory-list' },
-      { title: 'Vehicle Details', linked: '/vehicle-details' },
-      { title: 'Booking Auto', linked: '/booking-auto' },
+      { title: 'Inventory-Grid', linked: '/inventory-grid' },
+      { title: 'Inventory-List', linked: '/inventory-list' },
+      { title: 'Vehicle-Details', linked: '/vehicle-details' },
+      { title: 'Booking-Auto', linked: '/booking-auto' },
     ],
     linked: '/invent',
   },
@@ -80,7 +80,7 @@ const Navbar = () => {
                     {item.title}
                   </button>
                   {openMenuIndex === index && (
-                    <div className="absolute bg-white shadow-lg border mt-2 rounded-lg">
+                    <div className="absolute bg-white shadow-lg border mt-2 rounded-lg w-40">
                       {item.submenu.map((subItem, subIndex) => (
                         <NavLink
                           key={subIndex}

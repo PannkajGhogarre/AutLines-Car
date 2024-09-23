@@ -1,30 +1,35 @@
 import React, { useState } from 'react'
-import { motion } from 'framer-motion'
 import { NavLink } from 'react-router-dom'
+import { motion } from 'framer-motion';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
-const audi = [
-    './audi1.jpg',
-    './audi2.jpg',
-    './audi3.jpg',
-    './audi4.jpg',
-    './audi5.jpg',
-    './audi6.jpg',
+
+const audiR = [
+    './r1.jpg',
+    './r2.jpg',
+    './r3.jpg',
+    './r4.jpg',
+    './r5.jpg',
+    './r6.jpg',
 ]
 
-const Details = () => {
 
-    const [activeTab, setActiveTab] = useState('description'); // State to track active tab
+const Booking = () => {
+
 
     // State to track which image is displayed
-    const [mainImage, setMainImage] = useState(audi[0]);
+    const [mainImage, setMainImage] = useState(audiR[0]);
+
+    const [selectedDate, setSelectedDate] = useState(new Date());
+
+    const [activeTab, setActiveTab] = useState('description');
 
     // Function to change the main image when a thumbnail is clicked
     const handleImageClick = (image) => {
         setMainImage(image);
     };
 
-
-    // Function to render the content based on active tab
     const renderContent = () => {
         switch (activeTab) {
             case 'description':
@@ -103,7 +108,7 @@ const Details = () => {
 
                     <motion.h1
                         initial={{ x: -200 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
-                        className='md:text-6xl text-4xl font-bold text-[#ffff]'>Audi S5 Sportback</motion.h1>
+                        className='md:text-6xl text-4xl font-bold text-[#ffff]'>Audi RS4 Avant</motion.h1>
 
                     <motion.div
                         initial={{ x: 200 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
@@ -120,32 +125,32 @@ const Details = () => {
                             <h3 className='text-base text-[#ffffff] hover:text-three cursor-pointer'>Audi</h3>
                         </NavLink>
                         <a href="#"><i className="ri-arrow-right-double-line text-three"></i></a>
-                        <h3 className='text-base text-[#ffffff]'>A4</h3>
+                        <h3 className='text-base text-[#ffffff]'>A3</h3>
                         <a href="#"><i className="ri-arrow-right-double-line text-three"></i></a>
-                        <h3 className='text-base text-[#ffffff]'>Audi S5 Sportback</h3>
+                        <h3 className='text-base text-[#ffffff]'>Audi RS4 Avant</h3>
                     </motion.div>
                 </motion.div>
 
                 <div className='md:flex gap-5 md:px-40 px-2'>
-                    <section className='mt-10'>
-                        <div>
+                    <section>
+                        <div className='mt-10'>
                             <motion.h1
                                 initial={{ x: 100 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
                                 className='text-xl font-normal text-[#292828c6]'>Sportiness at maximum power</motion.h1>
                             <motion.h1
                                 initial={{ x: -100 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
-                                className='text-5xl font-bold mt-5'>Audi S5 Sportback</motion.h1>
+                                className='text-5xl font-bold mt-5'>Audi RS4 Avant</motion.h1>
                             <motion.div
                                 initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}
                                 className="flex flex-col space-y-4 mt-10">
                                 {/* Main Image */}
-                                <div className="w-full max-w-2xl">
-                                    <img src={mainImage} alt="Car Interior" className="w-full h-auto rounded-lg shadow-md" />
+                                <div className="w-full md:max-w-2xl max-w-4xl">
+                                    <img src={mainImage} alt="Car Interior" className="w-auto h-auto rounded-lg shadow-md" />
                                 </div>
 
                                 {/* Thumbnail Images */}
                                 <div className="flex flex-wrap space-x-2">
-                                    {audi.map((image, index) => (
+                                    {audiR.map((image, index) => (
                                         <img
                                             key={index}
                                             src={image}
@@ -157,8 +162,23 @@ const Details = () => {
                                     ))}
                                 </div>
                             </motion.div>
+                        </div>
 
-                            <motion.div
+                        <div className="flex flex-col py-10">
+                            <h2 className="text-2xl font-semibold mb-4">Select a Date</h2>
+                            <div className="p-4">
+                                <Calendar
+                                    onChange={setSelectedDate}
+                                    value={selectedDate}
+                                    className="text-center"
+                                />
+                            </div>
+                            <p className="mt-4 text-lg text-gray-700">
+                                Selected Date: {selectedDate.toLocaleDateString()}
+                            </p>
+                        </div>
+
+                        <motion.div
                                 initial={{ opacity: 0, scale: 0 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 1 }}
                                 className='mt-10'>
                                 <h1 className='text-4xl font-bold'>Vehicle Specifications</h1>
@@ -228,105 +248,80 @@ const Details = () => {
                                     {renderContent()}
                                 </div>
                             </div>
-                        </div>
                     </section>
                     <section>
-                        <div className='mt-10'>
+                    <div className='mt-10'>
                             <motion.div
                                 initial={{ x: 100 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
                                 className='flex border bg-one px-20 py-6 gap-2 justify-center items-center'>
-                                <h1 className='text-white '>Price</h1>
-                                <p className='text-white text-xl font-bold'>$70,000</p>
-                            </motion.div>
-                            <motion.div
-                                initial={{ x: -100 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
-                                className='border bg-slate-200 px-20 py-6 gap-2 justify-center items-center text-center'>
-                                <h1 className='text-[#363636]'>Included Taxes & Checkup*</h1>
-                            </motion.div>
-                            <motion.div
-                                initial={{ x: 100 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
-                                className='flex border bg-white px-20 py-6 gap-2 justify-center items-center'>
-                                <img src="./logotype-inner-car-1-min.png" alt="" />
-                                <img src="./logotype-inner-car-2-min.png" alt="" />
-                            </motion.div>
-                            <motion.div
-                                initial={{ x: -100 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
-                                className='flex border bg-three px-20 py-6 gap-2 justify-center items-center'>
-                                <img src="./jane.png" alt="" />
-                                <div>
-                                    <h1 className='text-white text-xl font-bold'>Jane William</h1>
-                                    <p className='text-white '>Member since: June 2019</p>
-                                </div>
-                            </motion.div>
-                            <motion.div
-                                initial={{ x: 100 }} whileInView={{ x: 0 }} transition={{ duration: 2 }}
-                                className='border bg-white px-20 py-6 gap-2 justify-center items-center'>
-                                <div className='flex'>
-                                    <a href="#"><i className="ri-phone-line text-6xl text-three"></i></a>
-                                    <div>
-                                        <p className='text-[#100f0fc4]'>Contact Seller</p>
-                                        <h1 className='text-xl font-bold'>1 (258) 403 7961</h1>
-                                    </div>
-                                </div>
-                                <div className='flex gap-3 justify-center items-center mt-5'>
-                                    <a href="#"><i className="ri-instagram-line text-[#5555]"></i></a>
-                                    <a href="#"><i className="ri-twitter-line text-[#5555]"></i></a>
-                                    <a href="#"><i className="ri-google-fill text-[#5555]"></i></a>
-                                    <a href="#"><i className="ri-facebook-fill text-[#5555]"></i></a>
-                                    <a href="#"><i className="ri-pinterest-line text-[#5555]"></i></a>
-                                </div>
+                                <h1 className='text-white text-xl font-bold '>$50</h1>
+                                <p className='text-white text-xl font-bold'>/ IN DAY</p>
                             </motion.div>
 
                             <motion.div
                                 initial={{ y: 100 }} whileInView={{ y: 0 }} transition={{ duration: 1 }}
-                                className='mt-10 border bg-[#f1f5fa] p-2'>
-                                <h1 className='py-5 px-5 text-xl font-semibold'>Message Seller</h1>
+                                className='border-none bg-[#f1f5fa] p-2'>
                                 <div className=''>
                                     <div className='flex flex-col px-5 mt-5'>
-                                        <label className="text-base font-semibold">Your Name (required)</label>
-                                        <input type="text" className='w-auto h-12 mt-2' />
+                                        <label className="text-base font-semibold">Pick-up Location</label>
+                                        <select name="" id="" className='w-80 h-10 mt-2'>
+                                            <option value="">New York</option>
+                                            <option value="">London</option>
+                                            <option value="">Paris</option>
+                                        </select>
                                     </div>
                                     <div className='flex flex-col px-5 mt-5'>
-                                        <label className="text-base font-semibold">Your Email (required)</label>
-                                        <input type="text" className='w-auto h-12 mt-2' />
+                                        <label className="text-base font-semibold">Drop-off Location</label>
+                                        <select name="" id="" className='w-80 h-10 mt-2'> Slect Lov
+                                            <option value="">New York</option>
+                                            <option value="">London</option>
+                                            <option value="">Paris</option>
+                                        </select>
                                     </div>
                                     <div className='flex flex-col px-5 mt-5'>
-                                        <label className="text-base font-semibold">Your Message</label>
-                                        <input type="text" className='w-auto h-32 mt-2' />
+                                        <label className="text-base font-semibold">Pick-up Date</label>
+                                        <input type='date' className='w-80 h-10 mt-2' />
                                     </div>
-                                    <div className='mt-5 px-5 py-2 border bg-one hover:bg-three cursor-pointer items-center text-center'>
-                                        <button className='text-center'>SEND MESSAGE</button>
+                                    <div className='flex flex-col px-5 mt-5'>
+                                        <label className="text-base font-semibold">Drop-off Date</label>
+                                        <input type="date" className='w-80 h-10 mt-2' />
                                     </div>
                                 </div>
-                            </motion.div>
-                            <motion.div 
-                            initial={{x:100}} whileInView={{x:0}} transition={{duration:2}}
-                            className='mt-10 border bg-[#f1f5fa] p-2'>
-                                <h1 className='py-5 px-5 text-xl font-semibold'>Financing Calculator</h1>
-                                <div className=''>
-                                    <div className='flex flex-col px-5 mt-5'>
-                                        <label className="text-base font-semibold">Vehicle price ($)</label>
-                                        <input type="text" placeholder='70000' className='w-auto h-12 mt-2 p-2' />
-                                    </div>
-                                    <div className='flex '>
-                                        <div className='flex flex-col px-5 mt-5'>
-                                            <label className="text-base font-semibold">Interest rate (%)</label>
-                                            <input type="text" placeholder='5' className='w-auto h-12 mt-2 p-2' />
+
+                                <div className='px-5 mt-5'>
+                                    <p className='text-sm font-light'>Save Up 25% to rental on 3 days</p>
+                                    <p className='text-sm font-light'>Save Up 50% to rental on 6 days</p>
+                                    <div className='mt-5'>
+                                        <h1 className='text-xl font-bold'>Extra Resource</h1>
+                                        <div className='flex items-center justify-between mt-5'>
+                                            <div className='flex gap-5'>
+                                                <input type="checkbox" />
+                                                <h1>Child Seat</h1>
+                                            </div>
+                                            <p>£ 20 / Day </p>
                                         </div>
-                                        <div className='flex flex-col px-5 mt-5'>
-                                            <label className="text-base font-semibold">Period (month)</label>
-                                            <input type="text" placeholder='36' className='w-auto h-12 mt-2 p-2' />
+                                        <div className='flex items-center justify-between mt-5'>
+                                            <div className='flex gap-5'>
+                                                <input type="checkbox" />
+                                                <h1>ADDITIONAL DRIVER</h1>
+                                            </div>
+                                            <p>£ 50 / Day </p>
                                         </div>
-                                    </div>
-                                    <div className='flex flex-col px-5 mt-5'>
-                                        <label className="text-base font-semibold">Down Payment ($)</label>
-                                        <input type="text" placeholder='10000' className='w-auto h-12 mt-2 p-2' />
-                                    </div>
-                                    <div className='mt-5 px-5 py-2 border bg-one hover:bg-three cursor-pointer items-center text-center'>
-                                        <button className='text-center'>CALCULATE</button>
+                                        <div className='flex items-center justify-between mt-5'>
+                                            <div className='flex gap-5'>
+                                                <input type="checkbox" />
+                                                <h1> GPS NAVIGATION</h1>
+                                            </div>
+                                            <p>£ 30 / Day </p>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div className='mt-5 px-5 py-2 border bg-one hover:bg-three cursor-pointer items-center text-center'>
+                                        <button className='text-center uppercase'>Booking this car</button>
+                                    </div>
                             </motion.div>
+                            
                         </div>
                     </section>
                 </div>
@@ -335,4 +330,4 @@ const Details = () => {
     )
 }
 
-export default Details
+export default Booking
