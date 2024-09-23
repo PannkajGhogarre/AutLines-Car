@@ -13,6 +13,8 @@ import List from './components/Inventory/List'
 import Details from './components/Inventory/Details'
 import Booking from './components/Inventory/Booking'
 import Shop from './components/Pages/Shop'
+import Product from './components/Pages/Product'
+import Cart from './components/Pages/Cart'
 
 
 const App = () => {
@@ -27,6 +29,8 @@ const App = () => {
         <Route path='/vehicle-details' element={<Details/>}/>
         <Route path='/booking-auto' element={<Booking/>}/>
         <Route path='/shop' element={<Shop/>}/>
+        <Route path='/product' element={<Product/>}/>
+        <Route path='/cart' element={<Cart/>}/>
         <Route path='news' element={<News/>}/>
         <Route path='contact' element={<Contact/>}/>
       </Routes>

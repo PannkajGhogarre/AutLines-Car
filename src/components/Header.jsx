@@ -18,7 +18,7 @@ const MenuItemData = [
     title: 'Page',
     submenu: [
       { title: 'Shop', linked: '/shop' },
-      { title: 'Product', linked: '/product' },
+      { title: 'Product Inner', linked: '/product' },
       { title: 'My Account', linked: '/account' },
       { title: 'Checkout', linked: '/checkout' },
       { title: 'Cart', linked: '/cart' },
@@ -85,7 +85,7 @@ const Navbar = () => {
                         <NavLink
                           key={subIndex}
                           to={subItem.linked}
-                          className="block px-4 py-2 hover:bg-gray-100"
+                          className="block px-4 py-2 hover:text-three"
                           onClick={handleClose}
                         >
                           {subItem.title}
