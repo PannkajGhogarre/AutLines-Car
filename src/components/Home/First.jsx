@@ -20,7 +20,7 @@ const img1 = [
   {
     imge: './car2.png',
     model: 'DRIVE THE FASTEST CAR',
-    m1: 'expolre Now',
+    m1: 'explore Now',
     m2: ""
 
   },

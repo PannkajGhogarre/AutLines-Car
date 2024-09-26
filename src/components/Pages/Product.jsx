@@ -77,7 +77,7 @@ const Product = () => {
                 <div className='md:flex gap-10 md:px-40 px-2 py-20'>
                     <motion.div
                     initial={{x:-100}} whileInView={{x:0}} transition={{duration:2}}>
-                        <img src="./shop12.jpg" alt="" className='border border-gray-200' />
+                        <img src="./shop12.jpg" alt="" className='border border-gray-200 p-12' />
                     </motion.div>
                     <motion.div
                     initial={{x:100}} whileInView={{x:0}} transition={{duration:2}}>

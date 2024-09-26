@@ -7,7 +7,7 @@ const Second = () => {
     <>
         <div className='bg-white md:flex md:flex-wrap lg:px-36 md:px-10 px-2 md:mt-28 mt-60'>
         <motion.section
-         initial={{opacity:0, scale:0,}} whileInView={{opacity:1, scale:1,}} transition={{ease: "linear",duration:1.2,}}
+         initial={{x:-100}} whileInView={{x:0}} transition={{duration:2}}
         className='md:w-1/2 border-l-8 border-b-8 border-slate-100 p-5 mt-20'>
           <div className='items-left text-wrap'>
             <h1 className='text-4xl text-[#222222] font-bold text-center lg:px-14 '>Easy Auto Finance Facilities</h1>
@@ -26,7 +26,7 @@ const Second = () => {
         </motion.section>
 
         <motion.section
-        initial={{opacity:0, scale:0,}} whileInView={{opacity:1, scale:1,}} transition={{ease: "linear",duration:1.2,}}
+        initial={{x:100}} whileInView={{x:0}} transition={{duration:2}}
         className='md:w-1/2'>
           <div className='grid grid-cols-1 md:grid-cols-2  items-center gap-5'>
             <div className='w-auto bg-white border border-gray-100 py-10 gap-2 mt-1 bg-[url("./nature.jpg")] bg-cover'>
